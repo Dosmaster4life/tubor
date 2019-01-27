@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_calendar/flutter_calendar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
-
+import 'package:image_picker/image_picker.dart';
+import './ImagePick.dart';
+import 'dart:io';
+DocumentSnapshot snapshot;
 class MyProfilePage extends StatelessWidget {
   final DocumentReference reference;
   final DocumentSnapshot snapshot;
@@ -29,6 +31,7 @@ class MyProfilePage extends StatelessWidget {
   }
 
   @override
+  
   Widget build(BuildContext context) {
     if (snapshot == null)
       return Container(child: Text('loading'));
@@ -44,7 +47,9 @@ class MyProfilePage extends StatelessWidget {
               children: <Widget>[
                 Center(
                   child: InkWell(
-                    onLongPress: () => print('change profile'),
+                    onLongPress: () => Navigator.push(context,MaterialPageRoute(builder: (context) => ImagePick()
+
+                    )),
                     child: Container(
                       padding: EdgeInsets.all(15),
                       child: CircleAvatar(
